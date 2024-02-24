@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Infotable extends StatelessWidget {
+class Infotable extends StatefulWidget {
   const Infotable({super.key});
 
+  @override
+  State<Infotable> createState() => _InfotableState();
+}
+
+class _InfotableState extends State<Infotable> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
