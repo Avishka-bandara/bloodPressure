@@ -24,9 +24,14 @@ class UserController extends GetxController {
 final UserController userController =
     UserController(); // Single instance of UserController
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
 
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
