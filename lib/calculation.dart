@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Calculation extends StatelessWidget {
+class Calculation extends StatefulWidget {
   final double systolicPressure;
   final double diastolicPressure;
-  late final String result;
 
    Calculation({
     Key? key,
     required this.systolicPressure,
     required this.diastolicPressure,
   }) : super(key: key);
+
+  @override
+  State<Calculation> createState() => _CalculationState();
+}
+
+class _CalculationState extends State<Calculation> {
+  late final String result;
 
   @override
   Widget build(BuildContext context) {
@@ -20,20 +26,20 @@ class Calculation extends StatelessWidget {
 
   String calculateResult() {
     String result;
-    if ((40 <= systolicPressure && systolicPressure <= 90) &&
-        (40 <= diastolicPressure && diastolicPressure <= 60)) {
+    if ((40 <= widget.systolicPressure && widget.systolicPressure <= 90) &&
+        (40 <= widget.diastolicPressure && widget.diastolicPressure <= 60)) {
       result = "Low Blood Pressure";
-    } else if ((91 <= systolicPressure && systolicPressure <= 120) &&
-        (61 <= diastolicPressure && diastolicPressure <= 80)) {
+    } else if ((91 <= widget.systolicPressure && widget.systolicPressure <= 120) &&
+        (61 <= widget.diastolicPressure && widget.diastolicPressure <= 80)) {
       result = "prehypertension";
-    } else if ((121 <= systolicPressure && systolicPressure <= 140) &&
-        (81 <= diastolicPressure && diastolicPressure <= 90)) {
+    } else if ((121 <= widget.systolicPressure && widget.systolicPressure <= 140) &&
+        (81 <= widget.diastolicPressure && widget.diastolicPressure <= 90)) {
       result = "Stage 1 Hypertension";
-    } else if ((141 <= systolicPressure && systolicPressure <= 160) &&
-        (91 <= diastolicPressure && diastolicPressure <= 100)) {
+    } else if ((141 <= widget.systolicPressure && widget.systolicPressure <= 160) &&
+        (91 <= widget.diastolicPressure && widget.diastolicPressure <= 100)) {
       result = "stage 2 Hypertension";
-    } else if ((161 <= systolicPressure && systolicPressure <= 185) &&
-        (101 <= diastolicPressure && diastolicPressure <= 125)) {
+    } else if ((161 <= widget.systolicPressure && widget.systolicPressure <= 185) &&
+        (101 <= widget.diastolicPressure && widget.diastolicPressure <= 125)) {
       result = "stage 2 Hypertension";
     } else {
       result = "Hypertensive Crisis";
@@ -43,7 +49,7 @@ class Calculation extends StatelessWidget {
 }
 
 // display the result of the blood pressure
-class Final extends StatelessWidget {
+class Final extends StatefulWidget {
   final String result;
 
   const Final({
@@ -51,6 +57,11 @@ class Final extends StatelessWidget {
     required this.result,
   });
 
+  @override
+  State<Final> createState() => _FinalState();
+}
+
+class _FinalState extends State<Final> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +92,7 @@ class Final extends StatelessWidget {
                 ),
               ),
               child: Text(
-                result,
+                widget.result,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
